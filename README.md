@@ -21,5 +21,5 @@ Para iniciar o projeto, execute o seguinte comando: `npm start` ou `yarn start`
 
 ## Screenshot Projeto
 
-![App Screenshot](https://github.com/CarlosAliSchutz/Banco-Desafio-Frontend/blob/main/src/assets/img/Banco-Desafio-Frontend.jpg)
+![App Screenshot](https://github.com/CarlosAliSchutz/Banco-Desafio-Frontend/blob/main/app/src/assets/img/Banco-Desafio-Frontend.jpg)
 

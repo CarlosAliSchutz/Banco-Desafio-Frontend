@@ -41,6 +41,7 @@ tr:nth-child(even) {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 td div{
@@ -67,4 +68,24 @@ label {
   width: 150px;
   height: 30px;
   font-size: 18px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
 }

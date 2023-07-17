@@ -10,6 +10,8 @@ function App() {
   const [saldoTotal, setSaldoTotal] = useState(0);
   const [dataInicio, setDataInicio] = useState("");
   const [dataFinal, setDataFinal] = useState("");
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const itensPorPagina = 4;
 
   function handleDateInicio(event) {
     setDataInicio(event.target.value);
@@ -18,6 +20,11 @@ function App() {
   function handleDateFinal(event) {
     setDataFinal(event.target.value);
   }
+
+  const ItensDaPaginaAtual = transferencias.slice(
+    (paginaAtual - 1) * itensPorPagina,
+    paginaAtual * itensPorPagina
+  );
 
   async function pesquisarDadosBanco() {
     let url = `${API_URL}/transferencias`;
@@ -56,6 +63,8 @@ function App() {
     setDataFinal("");
     setDataInicio("");
   }
+
+  console.log(ItensDaPaginaAtual);
 
   return (
     <main>
@@ -101,7 +110,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {transferencias.map((transferencia, index) => (
+            {ItensDaPaginaAtual.map((transferencia, index) => (
               <tr key={index}>
                 <td>
                   {new Date(
@@ -115,6 +124,21 @@ function App() {
             ))}
           </tbody>
         </table>
+        {transferencias.length > itensPorPagina && (
+          <div className="pagination">
+            {Array.from({
+              length: Math.ceil(transferencias.length / itensPorPagina),
+            }).map((item, index) => (
+              <button
+                key={index}
+                onClick={() => setPaginaAtual(index + 1)}
+                className={index + 1 === paginaAtual ? "active" : ""}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
